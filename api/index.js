@@ -41,6 +41,10 @@ async function getServerData() {
     return cacheData;
 }
 
+app.get('/', (req, res) => {
+  res.send('use /api/status to check server status')
+})
+
 app.get('/api/status', async (req, res) => {
     try {
         const data = await getServerData();
