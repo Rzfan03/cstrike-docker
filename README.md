@@ -1,97 +1,312 @@
-# Counter-Strike 1.6 Server Docker Image with Bots
-![Docker Cloud Automated build](https://img.shields.io/docker/cloud/automated/cajuclc/cstrike-docker) ![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/cajuclc/cstrike-docker) ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/cajuclc/cstrike-docker/latest) ![Docker Pulls](https://img.shields.io/docker/pulls/cajuclc/cstrike-docker)
+# Counter-Strike 1.6 Server — Docker
 
-This image is based on [SteamCMD Docker](https://developer.valvesoftware.com/wiki/SteamCMD#Docker). It also includes Metamod, AMX Mod, DProto and Podbot.
+A containerized Counter-Strike 1.6 dedicated server with Metamod, AMX Mod X, DProto, and PODBot. Built on top of the official SteamCMD Docker image and designed to run on any Linux host, including homelab systems like TrueNAS Scale.
 
-### What is Metamod?
-* Metamod is a plugin/DLL manager that sits between the Half-Life Engine and an HL Game mod, allowing the dynamic loading/unloading of mod-like DLL plugins to add functionality to the HL server or game mod.
+---
 
-### What is AMX Mod?
-* AMX Mod X is a Metamod plugin for Half-Life 1. It provides comprehensive scripting for the game engine and its mods. Scripts can intercept network messages, log events, commands, client commands, set cvars, modify entities, and more.
+## What is Included
 
-### WHat is DProto?
-* It allows your server to accept non-Steam clients (clients with a cracked CS), if you don't have dproto installed on your server you can't enter on it without a legit Steam client/account. Dproto makes that possible!
-### What is Probot?
-* PODBot MetaMod is an open source (GPL) metamod plugin that adds computer players (bots) to a popular game called Counter-Strike.
+**Metamod** is a plugin/DLL manager that sits between the Half-Life engine and a game mod, enabling dynamic loading and unloading of mod-like DLL plugins to extend server or game functionality.
 
-# Quick Start
-The fastest way to run the Counter-Strike 1.6 Server is via `docker run`.
-* Pull the image:
-```
+**AMX Mod X** is a Metamod plugin for Half-Life 1 that provides comprehensive scripting capabilities. Scripts can intercept network messages, log events, handle commands and client commands, modify cvars, manipulate entities, and more.
+
+**DProto** allows the server to accept non-Steam (cracked) clients. Without it, only users with a legitimate Steam account can connect.
+
+**PODBot MetaMod** is an open source Metamod plugin that adds computer-controlled bot players to Counter-Strike.
+
+---
+
+## Quick Start
+
+Pull the image:
+
+```bash
 docker pull cajuclc/cstrike-docker
 ```
-* Run the image:
-```
-docker run --name cstrike -p 27015:27015/udp -p 27015:27015 cajuclc/cstrike-docker
-```
-* You can also run the server via `docker-compose`. You can find an example below.
 
-# Custom Config Files
-You can use your own `server.cfg`, `dproto.cfg`, `plugins.ini` and `mapcycle.txt` by mounting them to the container. Any custom config file **WILL** override the settings from your environment variables.
-```
--v /path/to/your/server.cfg:/home/steam/cstrike/cstrike/server.cfg
+Run the container:
+
+```bash
+docker run --name cstrike \
+  -p 27015:27015/udp \
+  -p 27015:27015 \
+  cajuclc/cstrike-docker
 ```
 
-The complete `docker run` command is:
-```
-docker run --name cstrike -p 27015:27015/udp -p 27015:27015 -v /path/to/your/server.cfg:/home/steam/cstrike/cstrike/server.cfg cajuclc/cstrike-docker
+---
+
+## Custom Configuration
+
+You can override default config files by mounting your own versions into the container. Any mounted file takes precedence over environment variable settings.
+
+```bash
+docker run --name cstrike \
+  -p 27015:27015/udp \
+  -p 27015:27015 \
+  -v /path/to/your/server.cfg:/home/steam/cstrike/cstrike/server.cfg \
+  cajuclc/cstrike-docker
 ```
 
-# Docker Compose
-You can start the server by running:
-```
+Mountable config files:
+
+| File | Container Path |
+|------|----------------|
+| `server.cfg` | `/home/steam/cstrike/cstrike/server.cfg` |
+| `dproto.cfg` | `/home/steam/cstrike/cstrike/dproto.cfg` |
+| `plugins.ini` | `/home/steam/cstrike/cstrike/plugins.ini` |
+| `mapcycle.txt` | `/home/steam/cstrike/cstrike/mapcycle.txt` |
+
+---
+
+## Docker Compose
+
+```bash
 docker-compose up -d
 ```
-# Run on TrueNAS Scale
-I wrote an article how to run this image on TrueNAS Scale. You can find the article [here](https://www.cloudtutorial.net/run-counter-strike-1-6-server-on-truenas-scale/).
-# SteamCMD
-SteamCMD is responsible to install Counter-Strike and/or other games.
-There is a current bug that prevents the installation of Counter-Strike 1.6 in a single command. You can read more [here](https://developer.valvesoftware.com/wiki/SteamCMD#Downloading_an_app).
 
-# Podbot Menu
-If you want to be able to use the Podbot admin menu, you need to configure your Counter-Strike client (the one you play the game) with password. First make sure you add the file `podbot/podbot.cfg` as a mount to your container. This is the folder in the container:
+A sample `docker-compose.yml` is provided in the repository.
+
+---
+
+## Monitoring API
+
+The server exposes a lightweight REST API on port `4000` for real-time monitoring, player lookup, and map information. All responses are JSON unless otherwise noted.
+
+**Base URL:**
 ```
-/home/steam/cstrike/cstrike/addons/podbot/podbot.cfg
-```
-Search for `pb_passwordkey`, that's the name we will need. In my case: `pb_passwordkey "_pbadminpw"`.\
-Now I need the password, it's the next configuration. Here is mine: `pb_password "your_password"` (make sure you change your password).\
-We have to configure the password on the client (game) now. Open `cstrike` folder inside Steam installation. In my case I use a separate disk for all my games and this is where Counter-Strike is installed:
-```
-E:\Games\Steam\steamapps\common\Half-Life\cstrike
+http://<your-server-ip>:4000
 ```
 
-I manually created a file called `autoexec.cfg`. If you already this file, you just need to edit. Add the line:
+---
+
+### GET /api/status
+
+Returns the current server state including player list, map, ping, and capacity.
+
+**Request:**
+```
+GET /api/status
+```
+
+**Response — Online:**
+```json
+{
+  "status": "online",
+  "name": "My CS 1.6 Server",
+  "map": "de_dust2",
+  "players_online": 8,
+  "max_players": 32,
+  "ping": 14,
+  "players": [
+    {
+      "name": "Player1",
+      "score": 12,
+      "time": 3420
+    }
+  ],
+  "updated_at": "21:04:33"
+}
+```
+
+**Response — Offline:**
+```json
+{
+  "status": "offline",
+  "error": "connect ECONNREFUSED 127.0.0.1:27015"
+}
+```
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `status` | string | `"online"` or `"offline"` |
+| `name` | string | Server hostname |
+| `map` | string | Current map name |
+| `players_online` | number | Number of active players |
+| `max_players` | number | Server slot capacity |
+| `ping` | number | Server ping in milliseconds |
+| `players` | array | List of connected players |
+| `players[].name` | string | Player name |
+| `players[].score` | number | Current score/kills |
+| `players[].time` | number | Time connected in seconds |
+| `updated_at` | string | Timestamp of last data update |
+
+---
+
+### GET /api/search
+
+Searches for a player by name among currently connected players.
+
+**Request:**
+```
+GET /api/search?name={player_name}
+```
+
+**Parameters:**
+
+| Parameter | Required | Description |
+|-----------|----------|-------------|
+| `name` | Yes | Full or partial player name (case-insensitive) |
+
+**Response — Player Found:**
+```json
+{
+  "is_online": true,
+  "matches": [
+    {
+      "name": "Player1",
+      "score": 12,
+      "time": 3420
+    }
+  ]
+}
+```
+
+**Response — Not Found:**
+```json
+{
+  "is_online": false,
+  "matches": []
+}
+```
+
+**Response — Missing Parameter:**
+```http
+HTTP 400 Bad Request
+
+{ "error": "Parameter nama harus diisi!" }
+```
+
+---
+
+### GET /api/map
+
+Returns the current map name and its thumbnail image path.
+
+**Request:**
+```
+GET /api/map
+```
+
+**Response:**
+```json
+{
+  "current_map": "de_dust2",
+  "map_image_url": "/assets/maps/de_dust2.jpg"
+}
+```
+
+Map thumbnails are served as static files from the `/assets/maps/` directory. To display a full image URL, prepend the base URL:
+
+```
+http://<your-server-ip>:4000/assets/maps/de_dust2.jpg
+```
+
+---
+
+### GET /api/widget
+
+Returns a plain-text one-liner summary of the server, suitable for embedding in bots, overlays, or status pages.
+
+**Request:**
+```
+GET /api/widget
+```
+
+**Response — Online:**
+```
+My CS 1.6 Server | de_dust2 | 8/32
+```
+
+**Response — Offline:**
+```
+Server Offline
+```
+
+---
+
+### Error Handling
+
+All endpoints return HTTP `500` on internal errors with the following shape:
+
+```json
+{
+  "error": "Description of what went wrong"
+}
+```
+
+Data is cached for **5 seconds** server-side. Repeated requests within that window return the cached result without querying the game server again.
+
+---
+
+## PODBot Admin Menu
+
+To use the PODBot admin menu in-game, mount the config file and set a password.
+
+Mount the config:
+```bash
+-v /path/to/podbot.cfg:/home/steam/cstrike/cstrike/addons/podbot/podbot.cfg
+```
+
+Inside `podbot.cfg`, locate these two lines:
+```
+pb_passwordkey "_pbadminpw"
+pb_password "your_password"
+```
+
+On your CS client, create or edit `cstrike/autoexec.cfg` inside your Half-Life installation:
 ```
 setinfo _pbadminpw "your_password"
 ```
-Again, make sure you use some safe password. Now open the game and create a bind:
+
+Then bind the menu in-game:
 ```
 bind "=" "pb menu"
 ```
-This way every time you press `=` it will open the Podbot menu and you can add, remove, kill bots and much more.
-# AMX Mod Menu
-If you need to have access to AMX Mod Menu. Then mount file `users.ini` to this location:
-```
-/home/steam/cstrike/cstrike/addons/amxmodx/configs/users.ini
-```
-Here is an example of the file: https://github.com/alliedmodders/amxmodx/blob/master/configs/users.ini
-You need to add your `user/IP/steam_id` to the list. Then inside the `autoexec.cfg` file we just created/edited you can add:
-```
-setinfo _pw "mypassword"
-```
-We get the `_pw` configuration from `amx_password_field "_pw"`, which comes from this file: https://github.com/alliedmodders/amxmodx/blob/master/configs/amxx.cfg#L14
-### Steam Application IDs
-You can find the list of IDs [here](https://developer.valvesoftware.com/wiki/Steam_Application_IDs).
-* 10 - Counter-Strike
-* 70 - Half-Life
-* 90 - Counter-Strike 1.6 Dedicated Server
 
-# Source
-The code to install the mods and bots were utilized from other repositories. Please give them some love and support.
-* [counter-strike-docker](https://github.com/jimtouz/counter-strike-docker), created by [Dimitris Touzloudis](https://github.com/jimtouz).
-* [cs16-server](https://github.com/b4k3r/cs16-server), created by [Marcin Prokop](https://github.com/b4k3r).
-* [counter-strike_server](https://github.com/febLey/counter-strike_server), created by [febLey](https://github.com/febLey).
+---
 
-# WHY?
-My friends and I decided to have a LAN Party (remember those?) at my house and we will be playing some classic games.\
-Instead of running these games directly on my PC, I decided to run on my TrueNAS server. TrueNAS allows you to run containers, so I decided to create this docker image.
+## AMX Mod X Admin Access
+
+Mount the users file:
+```bash
+-v /path/to/users.ini:/home/steam/cstrike/cstrike/addons/amxmodx/configs/users.ini
+```
+
+A reference `users.ini` is available at: https://github.com/alliedmodders/amxmodx/blob/master/configs/users.ini
+
+Add your username, IP, or Steam ID to the file, then add to `autoexec.cfg`:
+```
+setinfo _pw "your_password"
+```
+
+The `_pw` key comes from `amx_password_field "_pw"` defined in `amxx.cfg`.
+
+---
+
+## SteamCMD Notes
+
+SteamCMD is used internally to install Counter-Strike 1.6. There is a known bug that prevents installation in a single command. See the Valve developer wiki for details: https://developer.valvesoftware.com/wiki/SteamCMD#Downloading_an_app
+
+**Relevant Steam Application IDs:**
+
+| ID | Game |
+|----|------|
+| 10 | Counter-Strike |
+| 70 | Half-Life |
+| 90 | Counter-Strike 1.6 Dedicated Server |
+
+---
+
+## TrueNAS Scale
+
+For a step-by-step guide on running this image on TrueNAS Scale, see: https://www.cloudtutorial.net/run-counter-strike-1-6-server-on-truenas-scale/
+
+---
+
+## Credits
+
+This project builds on work from several open source repositories:
+
+- [counter-strike-docker](https://github.com/jimtouz/counter-strike-docker) by Dimitris Touzloudis
+- [cs16-server](https://github.com/b4k3r/cs16-server) by Marcin Prokop
+- [counter-strike_server](https://github.com/febLey/counter-strike_server) by febLey
