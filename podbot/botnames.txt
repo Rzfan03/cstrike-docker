@@ -8,121 +8,120 @@
 #23456789012345678901
 #
 #
-Danny_Devito
-Clint_Eastwood
-Wesley_Snipes
-Joe_Pesci
-George_Hamilton
-Jackie_Chan
-Jet_Li
-Jack_Palance
-Sean_Penn
-John_Malkovich
-Bruce_Lee
-Nicole_Kidman
-Chris_Tucker 
-Larry_Fishbourne
-Samuel_L_Jackson
-Keanau_Reeves
-Will_Smith
-Tommy_Lee_Jones
-Woody_Harrelson
-Sean_Connery
-Harrison_Ford
-Jeff_Bridges
-Stacy_Keech
-George_Clooney
-Sylvester_Stallone
-Jean_Claude_Van_Damme
-Arnold_Schwarzenegger
-Kim_Basinger
-Tom_Cruise
-Robert_Redford
-Andrew_Dice_Clay
-Jennifer_Anniston
-Matt_Damon
+Sutan_Sambo
+Lord_Ranggi
+Kaesang_Gelap
+Aldi_Taher_Kw
+Kakek_Zeus_Asli
+Mulyono_Racing
+Gibran_Es_Teh
+Haji_Lulung_Reborn
+Viktor_Laiskodat
+Megawati_Sukarno_Putr
+Prabowo_Gemoy
+Puan_Maharani_Kw
+Anies_Bubble
+Ganjar_Pranowo_Kw
+Raja_Gimmick
+Luhut_Bisa_Semua
+Rocky_Gerung_Kw
+Komeng_Uhuy
+Sule_Prik
+Azis_Gagap_Pro
+Andre_Taulany_Kw
+Tukul_Arwana_Kw
+Desta_Bot
+Vincent_Bot
+Indro_Warkop_Kw
+Dono_Warkop_Kw
+Kasino_Warkop_Kw
+Raditya_Dika_Kw
+Babe_Cabita_Legends
+Dodit_Mulyanto
+Soleh_Solihun
+Coki_Pardede_Kw
 #
 # 32 Names
 # 
-Bridget_Fonda
-Anthony_Hopkins
-Charlie_Sheen
-Juliet_Lewis
-Robert_Downey_Jr
-Jim_Carrey
-Patrick_Swayze
-Chris_Rock
-Rodney_Dangerfield
-Kate_Winslet
-Heather_Locklear
-Leonardo_DiCaprio
-Mel_Gibson
-Bruce_Willis
-Quentin_Tarantino
-Harvey_Keitel
-Sigourney_Weaver
-Heather_Graham
-Burt_Reynolds
-Jennifer_Love_Hewitt
-Drew_Barrymore
-Marylin_Monroe
-Adam_Sandler
-Cheech Marin
-Mickey_Rourke
-Sharon_Stone
-Al_Pacino
-Marlon_Brando
-Robert_Deniro
-Jack_Nicholson
-Thomas Chong
+Tretan_Muslim_Kw
+Mamat_Alkatiri
+Abdel_Temon
+Sule_Prik_Juga
+Kiwil_Ganteng
+Parto_Patrio_Kw
+Akri_Patrio
+Eko_Patrio
+Omesh_Bot
+Raffi_Ahmad_Kw
+Baim_Wong_Giveaway
+Deddy_Corbuzier_Kw
+Uya_Kuya_Settingan
+Hotman_Paris_Kw
+Farhat_Abbas_Kw
+Denny_Sumargo_Pebasket
+Gus_Samsudin_Asli
+Pesulap_Merah_Kw
+Roy_Kiyoshi_Indigo
+Rara_Pawang_Hujan
+Mak_Erot_Legends
+Nyi_Roro_Kidul_Kw
+Kuntilanak_Merah
+Pocong_Ngesot
+Genderuwo_Ganteng
+Tuyul_Milf_Hunter
+Mba_Lulu_Pasar
+Mamat_Gergaji
+Joni_Kriminal
+Slamet_Kopling
+Bambang_Racing
 #
 # 64 Names
 #
-Fragnatic
-DaTa
-Botman
-V0id
-Android
-M0rbid Desire
-Ping of Death
-Killing Frenzy
-Campers Death
-Count Floyd
-Polymorph
-Headshot Deluxe
-Trust Noone
-Borg Queen
-Make me Laugh
-Psyke
-Eliza
-Die Humans
-Alloc
-killaruna
-Electrica
-Ivan
-Laserdance
-S.E.S.
-L33t B0t
-U're Dead
-Violently Happy
-Make my Day
-Fuzzy Logic
-Pissed Off
-Neuromancer
-Neural Noise
+Asep_Knalpot
+Ujang_Spion
+Ceu_Edah_Rujak
+Mang_Oleh_Odading
+Siti_Glow_Up
+Siti_Badriah_Kw
+Ayu_Ting_Ting_Kw
+Dewi_Persik_Kw
+Inul_Daratista_Kw
+Rhoma_Irama_Kw
+Meggy_Z_Legends
+Didi_Kempot_Godfather
+Mansyur_S_Kw
+Elvy_Sukaesih_Kw
+Camelia_Malik
+Iis_Dahlia_Kw
+Nassar_Oppa
+King_Nassar
+Via_Vallen_Kw
+Nella_Kharisma_Kw
+Cita_Citata_Kw
+Zaskia_Gotik_Kw
+Lesti_Kejora_Kw
+Rizky_Billar_Kw
+Atta_Halilintar_Kw
+Aurel_Hermansyah_Kw
+Anang_Hermansyah_Kw
+Ashanty_Kw
+Krisdayanti_Kw
+Raul_Lemos_Kw
+Syahrini_Maju_Mundur
+Luna_Maya_Kw
 #
 # 96 Names
 # 
-Dr. No
-Kugelfang
-Murder Inc.
-Bloodlust
-Pseudolukian
-Zap!
-Rambotnic
-Hemp Invader
-Dredd
-Botsie Collins
-BotsBlitz
-Funky Byte
-Berzerk Bot
+Ariel_Noah_Kw
+Luna_Maya_Kw2
+Cut_Tari_Kw
+Gisel_Mama_Isell
+Gading_Marten_Kw
+Wijin_Bot
+Nikita_Mirzani_Kw
+Dewi_Persik_Kw2
+Lucinta_Luna_Asli
+Millen_Cyrus_Kw
+Ivan_Gunawan_Kw
+Ruben_Onsu_Kw
+Jordi_Onsu

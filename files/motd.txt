@@ -1,0 +1,106 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>RPL Strike Asia</title>
+    <style type="text/css">
+        body { 
+            background: #0d0d12; 
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0; 
+            padding: 0;
+            text-align: center;
+        }
+        .container {
+            width: 85%;
+            margin: 40px auto;
+            background: rgba(26, 26, 36, 0.95);
+            border: 2px solid #ffb000;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0px 0px 20px rgba(255, 176, 0, 0.2);
+        }
+        h1 { 
+            color: #ffb000; 
+            font-size: 28px;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        h2 {
+            color: #00ffcc;
+            font-size: 18px;
+            margin-top: 0;
+            margin-bottom: 25px;
+            letter-spacing: 1px;
+        }
+        .rules {
+            text-align: left;
+            background: #111116;
+            padding: 20px;
+            border-left: 4px solid #ffb000;
+            border-radius: 4px;
+            margin: 20px auto;
+            max-width: 500px;
+        }
+        .rules ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+        .rules li {
+            color: #e0e0e0;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+        .rules li strong {
+            color: #ffb000;
+        }
+        .btn-website {
+            display: inline-block;
+            background: #ffb000;
+            color: #000000;
+            padding: 12px 30px;
+            font-size: 15px;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 4px;
+            margin-top: 25px;
+            text-transform: uppercase;
+            transition: background 0.2s;
+        }
+        .btn-website:hover {
+            background: #ffe066;
+        }
+        .footer {
+            margin-top: 30px;
+            font-size: 12px;
+            color: #777788;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>RPL STRIKE ASIA</h1>
+        <h2>Public Server #1</h2>
+        
+        <p style="color: #cccccc; font-size: 15px;">Selamat datang di medan pertempuran! Harap patuhi peraturan komunitas kami demi kenyamanan bersama.</p>
+        
+        <div class="rules">
+            <ul>
+                <li><strong>Dilarang keras</strong> menggunakan Cheat, Script, atau eksploitasi ilegal lainnya.</li>
+                <li><strong>Hormati sesama pemain</strong>. Segala bentuk rasisme, toksisitas berlebih, dan sara akan ditindak tegas.</li>
+                <li><strong>Bermainlah secara objektif</strong> (Defuse/Plant C4 atau Rescue Hostage).</li>
+                <li><strong>Ikuti instruksi</strong> dari Admin yang sedang bertugas.</li>
+            </ul>
+        </div>
+
+        <a href="https://rpl-strike.vercel.app/" target="_blank" class="btn-website">Kunjungi Website Resmi</a>
+        
+        <div class="footer">
+            &copy; 2026 RPL Strike Asia. All Rights Reserved.
+        </div>
+    </div>
+
+</body>
+</html>
